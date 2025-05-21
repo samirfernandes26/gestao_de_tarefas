@@ -1,0 +1,39 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./container/Dockerfile
+    container_name: gestao-tarefas-web
+    ports:
+      - 9003:9003
+      - 80:80
+    depends_on:
+      - mysql
+    volumes:
+      - .:/var/www
+      - storage_data:/var/www/storage
+      - vendor_data:/var/www/vendor
+    networks:
+      - gestao_tarefas_network
+  
+  mysql:
+    image: mysql:8.0
+    container_name: gestao-tarefas-mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: raquellinda
+      MYSQL_DATABASE: gestao_tarefas
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - gestao_tarefas_network
+
+networks:
+  gestao_tarefas_network:
+    driver: bridge
+
+volumes:
+  vendor_data:
+  storage_data:
+  mysql_data:
