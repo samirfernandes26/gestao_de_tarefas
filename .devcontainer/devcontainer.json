@@ -1,0 +1,6 @@
+{
+	"name": "Gestão de Tarefas container",
+	"dockerComposeFile": "../docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/var/www"
+}
