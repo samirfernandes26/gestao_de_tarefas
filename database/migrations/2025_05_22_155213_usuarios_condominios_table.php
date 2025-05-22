@@ -13,7 +13,7 @@ return new class extends Migration {
 
         Schema::create('usuarios_condominios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('usuario_id')->constrained('usuarios');
+            $table->foreignId('usuario_id')->constrained('users');
             $table->foreignId('condominio_id')->constrained('condominios');
             $table->enum('papel', ['administrador', 'visualizador'])->default('visualizador');
             $table->unique(['usuario_id', 'condominio_id']);

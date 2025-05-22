@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->string('nome_arquivo');
             $table->text('caminho_arquivo');
             $table->string('tipo_arquivo')->nullable();
-            $table->foreignId('enviado_por')->constrained('usuarios');
+            $table->foreignId('enviado_por')->constrained('users');
             $table->timestamps();
         });
     }

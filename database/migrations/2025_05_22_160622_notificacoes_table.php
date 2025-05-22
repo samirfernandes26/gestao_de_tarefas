@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('notificacoes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('usuario_id')->constrained('usuarios');
+            $table->foreignId('usuario_id')->constrained('users');
             $table->string('titulo');
             $table->text('mensagem');
             $table->boolean('lida')->default(false);

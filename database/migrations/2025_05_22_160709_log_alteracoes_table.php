@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('tabela_afetada');
             $table->unsignedBigInteger('registro_id');
             $table->enum('operacao', ['INSERT', 'UPDATE', 'DELETE']);
-            $table->foreignId('usuario_id')->constrained('usuarios');
+            $table->foreignId('usuario_id')->constrained('users');
             $table->timestamp('data_hora')->useCurrent();
             $table->json('dados_anteriores')->nullable();
             $table->json('dados_novos')->nullable();

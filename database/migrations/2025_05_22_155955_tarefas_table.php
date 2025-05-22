@@ -23,8 +23,8 @@ return new class extends Migration
             $table->enum('situacao', ['Em dia', 'Atrasado']);
             $table->integer('repetir_em_meses')->nullable();
             $table->text('observacoes')->nullable();
-            $table->foreignId('created_by')->nullable()->constrained('usuarios');
-            $table->foreignId('updated_by')->nullable()->constrained('usuarios');
+            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('updated_by')->nullable()->constrained('users');
             $table->timestamps();
         });
     }

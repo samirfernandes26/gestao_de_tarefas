@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('tarefa_id')->constrained('tarefas');
             $table->enum('status_anterior', ['Não iniciada', 'Em andamento', 'Em execução', 'Concluída'])->nullable();
             $table->enum('status_novo', ['Não iniciada', 'Em andamento', 'Em execução', 'Concluída']);
-            $table->foreignId('alterado_por')->constrained('usuarios');
+            $table->foreignId('alterado_por')->constrained('users');
             $table->timestamp('alterado_em')->useCurrent();
         });
     }

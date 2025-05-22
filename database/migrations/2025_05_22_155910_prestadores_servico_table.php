@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('area_atuacao')->nullable();
             $table->string('contato')->nullable();
             $table->text('observacoes')->nullable();
-            $table->foreignId('created_by')->nullable()->constrained('usuarios');
-            $table->foreignId('updated_by')->nullable()->constrained('usuarios');
+            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('updated_by')->nullable()->constrained('users');
             $table->timestamps();
         });
     }
