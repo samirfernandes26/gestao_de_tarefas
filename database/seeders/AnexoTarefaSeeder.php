@@ -7,11 +7,9 @@ use App\Models\AnexoTarefa;
 
 class AnexoTarefaSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
-    {
-        AnexoTarefa::factory()->count(15)->create();
-    }
+
+    public function run()
+{
+    AnexoTarefa::factory()->count(10)->create();
+}
 }

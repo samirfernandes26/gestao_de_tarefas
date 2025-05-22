@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Condominio;
+use App\Models\User;
 
 class CondominioSeeder extends Seeder
 {
@@ -13,8 +14,8 @@ class CondominioSeeder extends Seeder
         Condominio::factory()
             ->count(10)
             ->create([
-                'created_by' => \App\Models\User::inRandomOrder()->first()?->id ?? 1,
-                'updated_by' => \App\Models\User::inRandomOrder()->first()?->id ?? 1,
+                'created_by' => User::inRandomOrder()->first()?->id ?? 1,
+                'updated_by' => User::inRandomOrder()->first()?->id ?? 1,
             ]);
     }
 }
