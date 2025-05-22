@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\ComentariosTarefa;
+use App\Models\ComentarioTarefa;
 use App\Models\Tarefa;
 use App\Models\user;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ComentariosTarefa>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ComentarioTarefa>
  */
 class ComentarioTarefaFactory extends Factory
 {
-    protected $model = ComentariosTarefa::class;
+    protected $model = ComentarioTarefa::class;
 
     public function definition(): array
     {

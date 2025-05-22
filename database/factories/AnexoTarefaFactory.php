@@ -2,17 +2,15 @@
 
 namespace Database\Factories;
 
-use App\Models\AnexosTarefa;
+use App\Models\AnexoTarefa;
 use App\Models\Tarefa;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Factories\Factory;y;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\AnexosTarefa>
- */
+
 class AnexoTarefaFactory extends Factory
 {
-    protected $model = AnexosTarefa::class;
+    protected $model = AnexoTarefa::class;
 
 
     public function definition(): array

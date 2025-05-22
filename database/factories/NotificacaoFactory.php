@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
+use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Notificacao;
 use App\Models\user;
-use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Notificacao>
@@ -20,7 +20,6 @@ class NotificacaoFactory extends Factory
             'titulo' => $this->faker->sentence,
             'mensagem' => $this->faker->paragraph,
             'lida' => $this->faker->boolean,
-            'criada_em' => now(),
         ];
     }
 }

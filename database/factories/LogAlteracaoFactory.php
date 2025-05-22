@@ -15,7 +15,7 @@ class LogAlteracaoFactory extends Factory
     public function definition(): array
     {
         return [
-            'tabela_afetada' => $this->faker->randomElement(['tarefas', 'usuarios', 'condominios']),
+            'tabela_afetada' => $this->faker->randomElement(['tarefas', 'users', 'condominios']),
             'registro_id' => $this->faker->numberBetween(1, 100),
             'operacao' => $this->faker->randomElement(['INSERT', 'UPDATE', 'DELETE']),
             'usuario_id' => User::inRandomOrder()->first()?->id ?? 1,
