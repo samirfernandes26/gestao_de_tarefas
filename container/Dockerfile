@@ -77,7 +77,7 @@ RUN cp .env.docker .env
 ENV DEBIAN_FRONTEND=dialog
 
 # Expõe portas do PHP-FPM
-EXPOSE 8080 9003
+EXPOSE 8080 9003 5173
 
 COPY container/start.sh /start.sh
 RUN chmod +x /start.sh
