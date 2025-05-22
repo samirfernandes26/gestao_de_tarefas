@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('condominios', function (Blueprint $table) {
+        Schema::create('prestadores_servico', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('endereco');
-            $table->string('responsavel')->nullable();;
+            $table->string('area_atuacao')->nullable();
             $table->string('contato')->nullable();
+            $table->text('observacoes')->nullable();
             $table->foreignId('created_by')->nullable()->constrained('usuarios');
             $table->foreignId('updated_by')->nullable()->constrained('usuarios');
             $table->timestamps();
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('condominios');
+        Schema::dropIfExists('prestadores_servico');
     }
 };

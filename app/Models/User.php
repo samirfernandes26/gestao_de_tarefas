@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'tipo_acesso',
     ];
 
     /**
@@ -45,4 +46,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    use HasFactory;
+
+    public $timestamps = true;
 }

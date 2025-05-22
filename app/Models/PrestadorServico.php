@@ -4,19 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Condominio extends Model
+class PrestadorServico extends Model
 {
     use HasFactory;
 
-    protected $table = 'condominios';
-    
+    protected $table = 'prestadores_servico';
     protected $fillable = [
         'nome',
-        'endereco',
-        'responsavel',
+        'area_atuacao',
         'contato',
+        'observacoes',
         'created_by',
         'updated_by'
     ];
+
     public $timestamps = false;
 }
