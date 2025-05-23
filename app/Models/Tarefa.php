@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\PrestadorServico;
 
 class Tarefa extends Model
 {
@@ -27,4 +28,14 @@ class Tarefa extends Model
     ];
 
     public $timestamps = false;
+
+    public function condominio()
+    {
+        return $this->belongsto(Condominio::class);
+    }
+
+    public function prestador()
+    {
+        return $this->belongsTo(PrestadorServico::class);
+    }
 }

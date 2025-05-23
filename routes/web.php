@@ -5,14 +5,14 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-use App\Http\Controllers\CondominioController;
-use App\Http\Controllers\Prestador\PrestadorServicoController;
-use App\Http\Controllers\Tarefa\TarefaController;
-use App\Http\Controllers\ComentarioTarefa\ComentarioTarefaController;
-use App\Http\Controllers\TarefaStatus\TarefaStatusLogController;
-use App\Http\Controllers\AnexoTarefa\AnexoTarefaController;
-use App\Http\Controllers\Notificacao\NotificacaoController;
-use App\Http\Controllers\LogAlteracao\LogAlteracaoController;
+// use App\Http\Controllers\CondominioController;
+// use App\Http\Controllers\Prestador\PrestadorServicoController;
+use App\Http\Controllers\TarefaController;
+// use App\Http\Controllers\ComentarioTarefa\ComentarioTarefaController;
+// use App\Http\Controllers\TarefaStatus\TarefaStatusLogController;
+// use App\Http\Controllers\AnexoTarefa\AnexoTarefaController;
+// use App\Http\Controllers\Notificacao\NotificacaoController;
+// use App\Http\Controllers\LogAlteracao\LogAlteracaoController;
 
 
 Route::get('/', function () {
@@ -35,13 +35,21 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::apiResource('condominios', CondominioController::class);
-Route::apiResource('prestadores-servico', PrestadorServicoController::class);
-Route::apiResource('tarefas', TarefaController::class);
-Route::apiResource('comentarios-tarefa', ComentarioTarefaController::class);
-Route::apiResource('tarefa-status-log', TarefaStatusLogController::class);
-Route::apiResource('anexos-tarefa', AnexoTarefaController::class);
-Route::apiResource('notificacoes', NotificacaoController::class);
-Route::apiResource('log-alteracoes', LogAlteracaoController::class);
+// Route::apiResource('condominios', CondominioController::class);
+// Route::apiResource('prestadores-servico', PrestadorServicoController::class);
+Route::prefix('tarefas')->group(function () {
+    Route::get('/', [TarefaController::class, 'index'])->name('tarefas.index');
+    // Route::get('/create', [TarefaController::class, 'create'])->name('tarefas.create');
+    // Route::post('/', [TarefaController::class, 'store'])->name('tarefas.store');
+    // Route::get('/{tarefa}', [TarefaController::class, 'show'])->name('tarefas.show');
+    // Route::get('/{tarefa}/edit', [TarefaController::class, 'edit'])->name('tarefas.edit');
+    // Route::put('/{tarefa}', [TarefaController::class, 'update'])->name('tarefas.update');
+    // Route::delete('/{tarefa}', [TarefaController::class, 'destroy'])->name('tarefas.destroy');
+});
+// Route::apiResource('comentarios-tarefa', ComentarioTarefaController::class);
+// Route::apiResource('tarefa-status-log', TarefaStatusLogController::class);
+// Route::apiResource('anexos-tarefa', AnexoTarefaController::class);
+// Route::apiResource('notificacoes', NotificacaoController::class);
+// Route::apiResource('log-alteracoes', LogAlteracaoController::class);
 
 require __DIR__ . '/auth.php';

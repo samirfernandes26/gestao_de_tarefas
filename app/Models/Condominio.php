@@ -20,4 +20,9 @@ class Condominio extends Model
         'updated_by'
     ];
     public $timestamps = false;
+
+    public function tarefas()
+    {
+        return $this->hasMany(Tarefa::class);
+    }
 }
