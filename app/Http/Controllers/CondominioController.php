@@ -5,48 +5,44 @@ namespace App\Http\Controllers;
 use App\Models\Condominio;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
 
 class CondominioController extends Controller
 {
-    //listar todos os condominios
     public function index()
     {
         $condominios = Condominio::all();
-
         return Inertia::render('Condominios/Index', [
             'condominios' => $condominios
         ]);
     }
 
-    //Mostrar o formulário de criação
     public function create()
     {
         return Inertia::render('Condominios/Create');
     }
 
-
-    //Salva no banco o condominio
     public function store(Request $request)
     {
         $request->validate([
-            'nome' => 'required|string',
-            'endereco' => 'required|string',
-            'responsavel' => 'required|string',
-            'contato' => 'required|strig',
+            'nome' => 'required|string|max:255',
+            'endereco' => 'required|string|max:255',
+            'responsavel' => 'nullable|string|max:255',
+            'contato' => 'nullable|string|max:255',
         ]);
 
-        Condominio::create($request->all());
+        Condominio::create([
+            'nome' => $request->nome,
+            'endereco' => $request->endereco,
+            'responsavel' => $request->responsavel,
+            'contato' => $request->contato,
+            'created_by' => Auth::id(),
+            'updated_by' => Auth::id(),
+        ]);
 
-        return redirect()->route('condominios.index')->with('success', '');
+        return redirect()->route('condominios.index')->with('success', 'Condomínio criado com sucesso.');
     }
 
-    //Visualizar o formulário de condomínios
-    public function show(Condominio $condominio)
-    {
-        return Inertia::render('Condominios/show');
-    }
-
-    //Mostra o formulário para a edição
     public function edit(Condominio $condominio)
     {
         return Inertia::render('Condominios/Edit', [
@@ -54,26 +50,30 @@ class CondominioController extends Controller
         ]);
     }
 
-    //Atualizar no banco um condomínio
     public function update(Request $request, Condominio $condominio)
     {
         $request->validate([
-            'nome' => 'required|string',
-            'endereco' => 'required|string',
-            'responsavel' => 'required|string',
-            'contato' => 'required|string',
+            'nome' => 'required|string|max:255',
+            'endereco' => 'required|string|max:255',
+            'responsavel' => 'nullable|string|max:255',
+            'contato' => 'nullable|string|max:255',
         ]);
 
-        $condominio->update($request->all());
+        $condominio->update([
+            'nome' => $request->nome,
+            'endereco' => $request->endereco,
+            'responsavel' => $request->responsavel,
+            'contato' => $request->contato,
+            'updated_by' => Auth::id(),
+        ]);
 
-        return redirect()->route('condominios.index')->with('success', '');
+        return redirect()->route('condominios.index')->with('success', 'Condomínio atualizado com sucesso.');
     }
 
-    //Deletar no banco um condominio
     public function destroy(Condominio $condominio)
     {
         $condominio->delete();
 
-        return redirect(route('condominios.index'))->with('success', '');
+        return redirect()->route('condominios.index')->with('success', 'Condomínio removido.');
     }
 }

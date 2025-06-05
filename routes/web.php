@@ -5,11 +5,12 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-// use App\Http\Controllers\CondominioController;
-// use App\Http\Controllers\Prestador\PrestadorServicoController;
+
+use App\Http\Controllers\CondominioController;
+use App\Http\Controllers\PrestadorServicoController;
 use App\Http\Controllers\TarefaController;
 // use App\Http\Controllers\ComentarioTarefa\ComentarioTarefaController;
-// use App\Http\Controllers\TarefaStatus\TarefaStatusLogController;
+use App\Http\Controllers\TarefaStatusLogController;
 // use App\Http\Controllers\AnexoTarefa\AnexoTarefaController;
 // use App\Http\Controllers\Notificacao\NotificacaoController;
 // use App\Http\Controllers\LogAlteracao\LogAlteracaoController;
@@ -35,8 +36,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-// Route::apiResource('condominios', CondominioController::class);
-// Route::apiResource('prestadores-servico', PrestadorServicoController::class);
+
 Route::prefix('tarefas')->group(function () {
     Route::get('/', [TarefaController::class, 'index'])->name('tarefas.index');
     // Route::get('/create', [TarefaController::class, 'create'])->name('tarefas.create');
@@ -46,10 +46,35 @@ Route::prefix('tarefas')->group(function () {
     // Route::put('/{tarefa}', [TarefaController::class, 'update'])->name('tarefas.update');
     // Route::delete('/{tarefa}', [TarefaController::class, 'destroy'])->name('tarefas.destroy');
 });
-// Route::apiResource('comentarios-tarefa', ComentarioTarefaController::class);
-// Route::apiResource('tarefa-status-log', TarefaStatusLogController::class);
-// Route::apiResource('anexos-tarefa', AnexoTarefaController::class);
-// Route::apiResource('notificacoes', NotificacaoController::class);
-// Route::apiResource('log-alteracoes', LogAlteracaoController::class);
+
+Route::prefix('condominios')->group(function () {
+    
+    Route::get('/', [CondominioController::class, 'index'])->name('condominios.index');
+    // Route::get('/create', [CondominioController::class, 'create'])->name('condominios.create');
+    // Route::post('/', [CondominioController::class, 'store'])->name('condominios.store');
+    // Route::get('/{condominio}/edit', [CondominioController::class, 'edit'])->name('condominios.edit');
+    // Route::put('/{condominio}', [CondominioController::class, 'update'])->name('condominios.update');
+    // Route::delete('/{condominio}', [CondominioController::class, 'destroy'])->name('condominios.destroy');
+});
+
+
+
+Route::prefix('prestadores')->group(function () {
+    Route::get('/', [PrestadorServicoController::class, 'index'])->name('prestadores.index');
+    // Route::get('/create', [PrestadorServicoController::class, 'create'])->name('prestadores.create');
+    // Route::post('/', [PrestadorServicoController::class, 'store'])->name('prestadores.store');
+    // Route::get('/{prestador}/edit', [PrestadorServicoController::class, 'edit'])->name('prestadores.edit');
+    // Route::put('/{prestador}', [PrestadorServicoController::class, 'update'])->name('prestadores.update');
+    // Route::delete('/{prestador}', [PrestadorServicoController::class, 'destroy'])->name('prestadores.destroy');
+},);
+
+Route::prefix('tarefa-status-logs')->group(function () {
+    Route::get('/', [TarefaStatusLogController::class, 'index'])->name('tarefa-status-logs.index');
+    // Route::post('/', [TarefaStatusLogController::class, 'store'])->name('tarefa-status-logs.store');
+    // Route::delete('/{log}', [TarefaStatusLogController::class, 'destroy'])->name('tarefa-status-logs.destroy');
+});
+
+
+
 
 require __DIR__ . '/auth.php';
