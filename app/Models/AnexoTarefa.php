@@ -20,4 +20,14 @@ class AnexoTarefa extends Model
     ];
 
     public $timestamps = false;
+
+    public function tarefa()
+    {
+        return $this->belongsTo(Tarefa::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'enviado_por');
+    }
 }

@@ -29,4 +29,10 @@ class LogAlteracao extends Model
         'dados_anteriores' => 'array',
         'dados_novos' => 'array',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'usuario_id');
+    }
+
 }

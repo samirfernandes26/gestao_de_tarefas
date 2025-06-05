@@ -9,11 +9,11 @@ use Inertia\Inertia;
 use App\Http\Controllers\CondominioController;
 use App\Http\Controllers\PrestadorServicoController;
 use App\Http\Controllers\TarefaController;
-// use App\Http\Controllers\ComentarioTarefa\ComentarioTarefaController;
+use App\Http\Controllers\ComentarioTarefaController;
 use App\Http\Controllers\TarefaStatusLogController;
-// use App\Http\Controllers\AnexoTarefa\AnexoTarefaController;
-// use App\Http\Controllers\Notificacao\NotificacaoController;
-// use App\Http\Controllers\LogAlteracao\LogAlteracaoController;
+use App\Http\Controllers\AnexoTarefaController;
+use App\Http\Controllers\NotificacaoController;
+use App\Http\Controllers\LogAlteracaoController;
 
 
 Route::get('/', function () {
@@ -74,6 +74,29 @@ Route::prefix('tarefa-status-logs')->group(function () {
     // Route::delete('/{log}', [TarefaStatusLogController::class, 'destroy'])->name('tarefa-status-logs.destroy');
 });
 
+Route::prefix('anexos')->group(function () {
+    Route::get('/', [AnexoTarefaController::class, 'index'])->name('anexos.index');
+    // Route::post('/', [AnexoTarefaController::class, 'store'])->name('anexos.store');
+    // Route::delete('/{anexo}', [AnexoTarefaController::class, 'destroy'])->name('anexos.destroy');
+});
+
+Route::prefix('comentarios')->group(function () {
+    Route::get('/', [ComentarioTarefaController::class, 'index'])->name('comentarios.index');
+    // Route::post('/', [ComentarioTarefaController::class, 'store'])->name('comentarios.store');
+    // Route::delete('/{comentario}', [ComentarioTarefaController::class, 'destroy'])->name('comentarios.destroy');
+});
+
+Route::prefix('logs-alteracoes')->group(function () {
+    Route::get('/', [LogAlteracaoController::class, 'index'])->name('logs-alteracoes.index');
+    Route::get('/{log}', [LogAlteracaoController::class, 'show'])->name('logs-alteracoes.show');
+});
+
+
+Route::prefix('notificacoes')->group(function () {
+    Route::get('/', [NotificacaoController::class, 'index'])->name('notificacoes.index');
+    Route::put('/{notificacao}', [NotificacaoController::class, 'update'])->name('notificacoes.update');
+    Route::delete('/{notificacao}', [NotificacaoController::class, 'destroy'])->name('notificacoes.destroy');
+});
 
 
 
